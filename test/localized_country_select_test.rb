@@ -34,17 +34,15 @@ class LocalizedCountrySelectTest < Test::Unit::TestCase
   end
 
   def test_should_return_select_tag_with_proper_name_for_object
-    # puts localized_country_select(:user, :country)
     assert localized_country_select(:user, :country) =~
-              Regexp.new(Regexp.escape('<select id="user_country" name="user[country]">')),
+              Regexp.new(Regexp.escape('<select name="user[country]" id="user_country">')),
               "Should have proper name for object"
   end
 
   def test_should_return_select_tag_with_proper_name
-    # puts localized_country_select_tag( "competition_submission[data][citizenship]", nil)
     assert localized_country_select_tag( "competition_submission[data][citizenship]", nil) =~
               Regexp.new(
-              Regexp.escape('<select id="competition_submission_data_citizenship" name="competition_submission[data][citizenship]">') ),
+              Regexp.escape('<select name="competition_submission[data][citizenship]" id="competition_submission_data_citizenship">') ),
               "Should have proper name"
   end
 
@@ -70,7 +68,7 @@ class LocalizedCountrySelectTest < Test::Unit::TestCase
 
   def test_excludes_countries
     assert_nothing_raised { LocalizedCountrySelect::localized_countries_array(:exclude => :ZZ) }
-    
+
     assert_block do
       not LocalizedCountrySelect::localized_countries_array(:exclude => :ZZ).any? {|country| country.last == "ZZ"}
     end

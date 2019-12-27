@@ -95,7 +95,6 @@
 			:GU => "Guam",
 			:GW => "Guinea-Bissau",
 			:GY => "Guyana",
-			:HK => "Hongkong, zvláštní administrativní oblast Číny",
 			:HK => "Hongkong",
 			:HM => "Ostrovy Heard a McDonald",
 			:HN => "Honduras",
@@ -149,7 +148,6 @@
 			:ML => "Mali",
 			:MM => "Myanmar",
 			:MN => "Mongolsko",
-			:MO => "Zvláštní administrativní oblast Číny Macao",
 			:MO => "Macao",
 			:MP => "Severní Mariany",
 			:MQ => "Martinik",
@@ -253,7 +251,7 @@
 			:ZM => "Zambie",
 			:ZW => "Zimbabwe",
 			:ZZ => "Neznámá nebo neplatná oblast",
-    } 
+    }
 
   }
 }

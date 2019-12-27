@@ -1,3 +1,3 @@
 module LocalizedCountrySelect
-  VERSION = '0.9.11'
+  VERSION = '0.10.0'
 end

@@ -26,7 +26,7 @@ module LocalizedCountrySelect
     def localized_countries_array(options={})
       exclude = Array(options[:exclude]).map {|code| code.to_s.upcase }
 
-      if(options[:description]==:abbreviated)
+      if(options[:description] == :abbreviated)
         I18n.translate(:countries).map { |key, value| [key.to_s.upcase] if !exclude.include?(key.to_s.upcase) }
       else
         I18n.translate(:countries).map { |key, value| [value, key.to_s.upcase] if !exclude.include?(key.to_s.upcase) }
@@ -36,8 +36,8 @@ module LocalizedCountrySelect
     # == Example
     #   priority_countries_array([:TW, :CN])
     #   # => [ ['Taiwan', 'TW'], ['China', 'CN'] ]
-    def priority_countries_array(country_codes=[],options={})
-      if(options[:description]==:abbreviated)
+    def priority_countries_array(country_codes=[], options={})
+      if(options[:description] == :abbreviated)
         country_codes.map { |code| [code.to_s.upcase] }
       else
         countries = I18n.translate(:countries)
@@ -57,13 +57,7 @@ module ActionView
       # Country codes listed as an array of symbols in +priority_countries+ argument will be listed first
       # TODO : Implement pseudo-named args with a hash, not the "somebody said PHP?" multiple args sillines
       def localized_country_select(object, method, priority_countries = nil, options = {}, html_options = {})
-        tag = if defined?(ActionView::Helpers::InstanceTag) &&
-                ActionView::Helpers::InstanceTag.instance_method(:initialize).arity != 0
-
-                InstanceTag.new(object, method, self, options.delete(:object))
-              else
-                CountrySelect.new(object, method, self, options)
-              end
+        tag = CountrySelect.new(object, method, self, options)
 
         tag.to_localized_country_select_tag(priority_countries, options, html_options)
       end
@@ -99,7 +93,6 @@ module ActionView
       def to_localized_country_select_tag(priority_countries, options, html_options)
         html_options = html_options.stringify_keys
         add_default_name_and_id(html_options)
-        value = value(object)
         content_tag("select",
           add_options(
             localized_country_options_for_select(value, priority_countries, options).html_safe,
@@ -109,20 +102,13 @@ module ActionView
       end
     end
 
-    if defined?(ActionView::Helpers::InstanceTag) &&
-        ActionView::Helpers::InstanceTag.instance_method(:initialize).arity != 0
-      class InstanceTag
-        include ToCountrySelectTag
-      end
-    else
-      class CountrySelect < Tags::Base
-        include ToCountrySelectTag
-      end
+    class CountrySelect < Tags::Base
+      include ToCountrySelectTag
     end
 
     class FormBuilder
       def localized_country_select(method, priority_countries = nil, options = {}, html_options = {})
-        @template.localized_country_select(@object_name, method, priority_countries, options.merge(:object => @object), html_options)
+        @template.localized_country_select(@object_name, method, priority_countries, options.merge(object: @object), html_options)
       end
       alias_method :country_select, :localized_country_select
     end
