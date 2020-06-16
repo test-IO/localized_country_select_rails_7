@@ -4,7 +4,7 @@ require 'active_support/inflector'
 require 'csv'
 
 # Rake task for importing country names from Unicode.org's CLDR repository
-# (http://www.unicode.org/cldr/data/charts/summary/root.html).
+# (https://unicode-org.github.io/cldr-staging/charts/37/summary/root.html).
 #
 # It parses a HTML file from Unicode.org for given locale and saves the
 # Rails' I18n hash in the plugin +locale+ directory
@@ -34,7 +34,7 @@ namespace :import do
     # Setup variables
     locale = ENV['LOCALE']
     unless locale
-      puts "\n[!] Usage: rake import:country_select LOCALE=de\n\n"
+      puts "\n[!] Usage: rails import:country_select LOCALE=de\n\n"
       exit 0
     end
 
