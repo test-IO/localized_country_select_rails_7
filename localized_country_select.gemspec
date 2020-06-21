@@ -2,8 +2,8 @@
 require File.expand_path('../lib/localized_country_select/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ['karmi', 'mlitwiniuk', 'LIM SAS', 'Damien MATHIEU', 'Julien SANCHEZ', 'Herv\303\251 GAUCHER', 'RainerBlessing']
-  gem.email         = [nil, 'maciej@litwiniuk.net', nil, nil, nil, nil, nil]
+  gem.authors       = ['karmi', 'mlitwiniuk', 'LIM SAS', 'Damien MATHIEU', 'Julien SANCHEZ', 'Herv\303\251 GAUCHER', 'RainerBlessing', 'bbenno']
+  gem.email         = [nil, 'maciej@litwiniuk.net', nil, nil, nil, nil, nil, 'bbenno@digitize-it.de']
   gem.description   = %q( Localized "country_select" helper with Rake task for downloading locales from Unicode.org's CLDR )
   gem.summary       = %q( Localized "country_select" helper with Rake task for downloading locales from Unicode.org's CLDR )
   gem.homepage      = 'https://github.com/mlitwiniuk/localized_country_select'
