@@ -47,7 +47,7 @@ namespace :import do
     # ----- Get the CLDR HTML     --------------------------------------------------
     begin
       puts "... getting the HTML file for locale '#{web_locale}'"
-      url = "http://www.unicode.org/cldr/data/charts/summary/#{web_locale}.html"
+      url = "https://unicode-org.github.io/cldr-staging/charts/37/summary/#{web_locale}.html"
       html = open(url).read
     rescue => e
       puts "[!] Invalid locale name '#{web_locale}'! Not found in CLDR (#{e})"
