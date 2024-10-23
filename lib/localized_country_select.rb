@@ -107,7 +107,9 @@ module ActionView
     end
 
     class FormBuilder
-      def localized_country_select(method, priority_countries = nil, options = {}, html_options = {})
+      def localized_country_select(method, options = {}, html_options = {})
+        priority_countries = options.delete(:priority_countries)
+
         @template.localized_country_select(@object_name, method, priority_countries, options.merge(object: @object), html_options)
       end
       alias_method :country_select, :localized_country_select
